@@ -1,11 +1,12 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import Hero from '../components/landingpage/Hero.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import AutodeskProductSection from '../components/landingpage/AutodeskProductSection.astro';
+import TrustSections from '../components/landingpage/TrustSections.astro';
 ---
 
 <Layout>
-	<Welcome />
+    <Hero title="Best Software License Keys " title2='& Digital Activation ' description="Cheap softwares & Activation keys for Windows & Mac, Verified digital products with guarantee & 24/7 customer support." imageUrl="/hero.png" />
+    <AutodeskProductSection />
+    <TrustSections />
 </Layout>

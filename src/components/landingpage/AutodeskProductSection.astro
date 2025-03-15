@@ -1,0 +1,58 @@
+---
+import { autodeskProducts, slugify } from '../../products/autodesk.js';
+import ProductCard from '../ProductCard.astro';
+---
+
+<section class="bg-cyan-50/50 py-16 px-4 md:px-8 lg:px-16 md:m-10">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col items-center mb-12 text-center">
+      <div class="inline-block mb-4">
+        <span class="bg-cyan-500 text-white px-4 py-1 rounded-full text-sm font-medium inline-flex items-center">
+          Autodesk Products
+          <span class="relative ml-2">
+            <span class="absolute inline-flex h-3 w-3 rounded-full bg-white opacity-75 animate-ping"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+          </span>
+        </span>
+      </div>
+      
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 leading-tight max-w-3xl">
+        Autodesk License Keys at 70% Off Retail Price | <span class="text-cyan-700">Instant Activation Guaranteed</span>
+      </h2>
+      
+      <p class="text-lg text-gray-600 max-w-2xl">
+        Professional software license keys with full support and instant digital delivery.
+        All products come with official activation and regular updates.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
+      {autodeskProducts.map((product) => (
+        <ProductCard 
+          id={product.id}
+          name={product.name}
+          title={product.title}
+          description={product.description}
+          image={product.image}
+          prices={product.prices}
+          discount={product.discount}
+          link={`/${product.category}/${slugify(product.name)}/`}
+          featured={product.featured}
+          activationType={product.activationType}
+        />
+      ))}
+    </div>
+    
+    <div class="mt-12 flex justify-center">
+      <a 
+        href="/autodesk/" 
+        class="inline-flex items-center px-6 py-3 border border-cyan-600 text-cyan-700 bg-white hover:bg-cyan-50 rounded-lg font-medium transition-colors"
+      >
+        View All Autodesk Products
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

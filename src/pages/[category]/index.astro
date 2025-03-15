@@ -1,0 +1,167 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { autodeskProducts, slugify } from '../../products/autodesk.js';
+import Hero from '../../components/landingpage/Hero.astro';
+
+export async function getStaticPaths() {
+  const categories = [...new Set(autodeskProducts.map(product => product.category))];
+  return categories.map(category => {
+    return {
+      params: { category },
+      props: { 
+        category,
+        products: autodeskProducts.filter(product => product.category === category)
+      }
+    };
+  });
+}
+
+const { category, products } = Astro.props;
+
+const softwareNames = products.map(product => product.name).join(', ');
+---
+
+<Layout title={`${category} License Keys | Download Yours!`}>
+  <!-- Your existing Hero section would go here -->
+   <Hero title='License Keys:' title2=' Download Yours Now!' imageUrl={products[0].categoryImg} description=''/>
+  
+  <main>
+    
+    <section class="bg-gradient-to-b from-white to-cyan-50 py-16 px-4 md:px-8 lg:px-16">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 leading-tight">
+              Premium {category} <span class="text-cyan-600">License Keys</span>
+            </h2>
+            
+            <div class="h-1 w-24 bg-cyan-500 mx-auto mb-8"></div>
+          </div>
+          
+          <div class="bg-white rounded-2xl shadow-lg p-8 md:p-10 border border-cyan-100">
+            <div class="flex flex-col md:flex-row gap-10 items-center">
+              <div class="md:w-2/3">
+                <p class="text-xl mb-6 font-light leading-relaxed">
+                  Our extensive collection of genuine <strong class="text-cyan-700">{category}</strong> license keys at prices up to <span class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded font-medium">80% below retail</span>. 
+                  Each authentic activation code is sourced through trusted channels, providing legitimate digital licenses 
+                  for <strong class="text-cyan-700">{softwareNames}</strong> with instant delivery to your email.
+                </p>
+                
+                <p class="text-lg font-light leading-relaxed">
+                  Our verified {category} keys include lifetime validity, free technical support, and a 30-day money-back guarantee. 
+                  Keys-expertise.com offers secure digital downloads of official software licenses trusted by over 125,000 customers worldwide. 
+                  We ensure you receive all updates and features while saving significantly on your software investment.
+                </p>
+                
+                <div class="mt-8 flex flex-wrap gap-4">
+                  <div class="flex items-center">
+                    <div class="bg-cyan-50 p-2 rounded-full mr-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <span>30-Day Guarantee</span>
+                  </div>
+                  
+                  <div class="flex items-center">
+                    <div class="bg-cyan-50 p-2 rounded-full mr-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <span>Instant Delivery</span>
+                  </div>
+                  
+                  <div class="flex items-center">
+                    <div class="bg-cyan-50 p-2 rounded-full mr-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span>Lifetime Validity</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="md:w-1/3">
+                <div class="bg-cyan-600 text-white rounded-xl p-6 shadow-lg">
+                  <div class="text-center mb-4">
+                    <h3 class="text-xl font-bold">Why Choose Us?</h3>
+                  </div>
+                  <ul class="space-y-3">
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>Up to 80% off retail prices</span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>Genuine license keys</span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>Trusted by 125,000+ customers</span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>Free technical support</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+    <!-- Section display products - Using your existing design -->
+    <section class="bg-cyan-50/50 py-16 px-4 md:px-8 lg:px-16 md:m-10">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col items-center mb-12 text-center">
+          <div class="inline-block mb-4">
+            <span class="bg-cyan-500 text-white px-4 py-1 rounded-full text-sm font-medium inline-flex items-center">
+              {category} Products
+              <span class="relative ml-2">
+                <span class="absolute inline-flex h-3 w-3 rounded-full bg-white opacity-75 animate-ping"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+              </span>
+            </span>
+          </div>
+          
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 leading-tight max-w-3xl">
+            {category} License Keys at {products[0]?.discount || 70}% Off Retail Price | <span class="text-cyan-700">Instant Activation Guaranteed</span>
+          </h2>
+          
+          <p class="text-lg text-gray-600 max-w-2xl">
+            Professional software license keys with full support and instant digital delivery.
+            All products come with official activation and regular updates.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
+          {products.map((product) => (
+            <ProductCard 
+              id={product.id}
+              name={product.name}
+              title={product.title}
+              description={product.description}
+              image={product.image}
+              prices={product.prices}
+              discount={product.discount}
+              link={`/${product.category}/${slugify(product.name)}/`}
+              featured={product.featured}
+              activationType={product.activationType}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
