@@ -18,13 +18,11 @@ export async function getStaticPaths() {
 }
 
 const { category, products } = Astro.props;
-
 const softwareNames = products.map(product => product.name).join(', ');
 ---
 
-<Layout title={`${category} License Keys | Download Yours!`}>
-  <!-- Your existing Hero section would go here -->
-   <Hero title='License Keys:' title2=' Download Yours Now!' imageUrl={products[0].categoryImg} description=''/>
+<Layout title={`Buy ${category} License Keys | For Mac & Windows | Keys-expertise`} description=`Download ${category} license keys at ${products[0].discount}% off retail prices. Download with support & money-back guarantee. Shop now!`>
+   <Hero title=`${category.toLocaleUpperCase()} License Keys:` title2='Download Yours Now!' imageUrl={products[0].categoryImg} description=''/>
   
   <main>
     
@@ -120,8 +118,6 @@ const softwareNames = products.map(product => product.name).join(', ');
           </div>
         </div>
       </section>
-    
-    <!-- Section display products - Using your existing design -->
     <section class="bg-cyan-50/50 py-16 px-4 md:px-8 lg:px-16 md:m-10">
       <div class="max-w-7xl mx-auto">
         <div class="flex flex-col items-center mb-12 text-center">

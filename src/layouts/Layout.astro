@@ -2,6 +2,13 @@
 import "../styles/global.css"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+
+interface Props {
+	title: string,
+	description: string,
+}
+const canonicalUrl=Astro.url.pathname
+const {title, description} = Astro.props;
 ---
 
 
@@ -9,10 +16,17 @@ import Footer from "../components/Footer"
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Digital </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href=`https://keys-expertise.com${canonicalUrl}`/>
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content=`https://keys-expertise.com${canonicalUrl}` />
+    <link rel="icon" href="/icon.jpg" sizes="32*32" />
 	</head>
 	<body class="relative">
 		<Header client:load/>

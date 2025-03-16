@@ -7,9 +7,16 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   trailingSlash: 'always',
+  site: 'https://keys-expertise.com',
   vite: {
     plugins: [tailwindcss()]
   },
 
-  integrations: [react(), sitemap()]
+  integrations: [react(), sitemap(
+    {
+      changefreq: "weekly",
+      priority: 0.9,
+      lastmod: new Date(),
+    }
+  )]
 });
