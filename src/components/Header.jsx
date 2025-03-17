@@ -23,7 +23,7 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed top-4 z-50 flex justify-center w-full px-4 py-2">
+    <div className="sticky top-4 z-50 flex justify-center w-full px-4 py-2">
       <header
         className={`flex items-center justify-between w-full max-w-6xl mx-auto rounded-xl px-6 py-3 transition-all duration-300 ${
           isScrolled
@@ -68,11 +68,10 @@ const Header = () => {
           <div className="relative w-4/5 max-w-sm bg-white p-6 overflow-y-auto h-full shadow-xl">
             <nav className="flex flex-col space-y-4">
               <MobileNavLink href="/" onClick={toggleMenu}>Home</MobileNavLink>
-              <MobileNavLink href="/products" onClick={toggleMenu}>Products</MobileNavLink>
-              <MobileNavLink href="/autodesk" onClick={toggleMenu}>Autodesk</MobileNavLink>
-              <MobileNavLink href="/microsoft" onClick={toggleMenu}>Microsoft</MobileNavLink>
-              <MobileNavLink href="/adobe" onClick={toggleMenu}>Adobe</MobileNavLink>
-              <MobileNavLink href="/contact" onClick={toggleMenu}>Contact</MobileNavLink>
+
+              <MobileNavLink href="/autodesk/" onClick={toggleMenu}>Autodesk</MobileNavLink>
+     
+              <MobileNavLink href="/contact/" onClick={toggleMenu}>Contact</MobileNavLink>
             </nav>
           </div>
         </div>
