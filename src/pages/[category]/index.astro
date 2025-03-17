@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import { autodeskProducts, slugify } from '../../products/autodesk.js';
 import Hero from '../../components/landingpage/Hero.astro';
+import FAQ from '../../components/FAQ.astro';
 
 export async function getStaticPaths() {
   const categories = [...new Set(autodeskProducts.map(product => product.category))];
@@ -19,6 +20,50 @@ export async function getStaticPaths() {
 
 const { category, products } = Astro.props;
 const softwareNames = products.map(product => product.name).join(', ');
+
+const faq = {
+  title: `Frequently Asked Questions About ${category} License Keys`,
+  faqs: [
+    {
+      question: `Are these ${category} license keys genuine and legal?`,
+      answer: `Yes, all our ${category} license keys are 100% genuine and legally sourced through trusted distribution channels. We specialize in volume licensing agreements and work with official software distributors to provide authentic activation keys at significantly reduced prices.`
+    },
+    {
+      question: `How quickly will I receive my ${category} license key?`,
+      answer: `Your ${category} license key will be delivered instantly after your payment is confirmed, typically within 5-30 minutes. The activation key and detailed installation instructions will be sent to your registered email address. If you don't receive your key within 15 minutes, please check your spam folder or contact our 24/7 customer support team.`
+    },
+    {
+      question: `What type of ${category} licenses do you sell?`,
+      answer: `We offer several types of ${category} licenses:
+* Retail Licenses: Full perpetual licenses with transfer rights
+* OEM Licenses: Tied to a single device but offered at excellent value
+* Volume Licenses: Legitimate keys from authorized volume licensing programs
+* Subscription Licenses: Time-based access (typically 1-3 years)
+Each product listing clearly specifies the license type, allowing you to make an informed decision based on your specific needs.`
+    },
+    {
+      question: `Will I receive updates with these ${category} license keys?`,
+      answer: `Yes, all our ${category} licenses activate genuine software, which means you'll receive all updates and security patches directly from ${category} for the duration of the license period. Perpetual licenses include lifetime updates for that specific software version, while subscription-based licenses receive full updates for the subscription duration.`
+    },
+    {
+      question: `What if my ${category} license key doesn't work?`,
+      answer: `While issues are extremely rare (affecting less than 0.5% of orders), our dedicated technical support team is available 24/7 to assist with any activation problems. If your ${category} key doesn't work, we'll first try to troubleshoot the issue with you. If the problem persists, we'll promptly provide a replacement key. If we can't resolve the issue, we'll process a full refund according to our 30-day money-back guarantee policy.`
+    },
+    {
+      question: `Can I use these ${category} keys for commercial purposes?`,
+      answer: `Yes, unless specifically noted otherwise, our ${category} licenses are valid for both personal and commercial use. Many of our business customers include enterprises, design firms, IT companies, educational institutions, and independent professionals who rely on our legitimate keys for their daily operations. Each product description clearly indicates any usage restrictions that might apply to specific license types.`
+    },
+    {
+      question: `How do I install and activate my ${category} software?`,
+      answer: `Each order comes with detailed, step-by-step installation and activation instructions tailored to your specific ${category} purchase. Generally, the process involves:
+* Downloading the official software from ${category}'s website
+* Installing the software on your device
+* When prompted, entering your license key
+* Completing the activation process online
+Our support team is available 24/7 if you need any assistance with installation or activation.`
+    }
+  ]
+}
 ---
 
 <Layout title={`Buy ${category} License Keys | For Mac & Windows | Keys-expertise`} description=`Download ${category} license keys at ${products[0].discount}% off retail prices. Download with support & money-back guarantee. Shop now!`>
@@ -159,5 +204,6 @@ const softwareNames = products.map(product => product.name).join(', ');
         </div>
       </div>
     </section>
+    <FAQ data={faq}/>
   </main>
 </Layout>

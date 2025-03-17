@@ -3,10 +3,55 @@ import Hero from '../components/landingpage/Hero.astro';
 import Layout from '../layouts/Layout.astro';
 import AutodeskProductSection from '../components/landingpage/AutodeskProductSection.astro';
 import TrustSections from '../components/landingpage/TrustSections.astro';
+import FAQ from '../components/FAQ.astro';
+
+const faqData = {
+  title: "Frequently Asked Questions",
+  faqs: [
+    {
+      question: "Are the software license keys sold on Keys-expertise.com legitimate?",
+      answer: "Absolutely. All our software license keys are 100% genuine and sourced through trusted channels. We specialize in volume licensing and work with distributors to provide software keys at discounted prices. Our 30-day money-back guarantee and 4.8/5 customer satisfaction rating stand as testament to our commitment to legitimacy."
+    },
+    {
+      question: "How can you offer such low prices compared to retail?",
+      answer: "Our business model eliminates traditional retail overhead costs. We purchase keys in bulk through volume licensing programs and trusted distributor partnerships, allowing us to secure wholesale rates. Additionally, as a digital-only business with optimized operations, we can pass these significant savings directly to our customers while maintaining profitability."
+    },
+    {
+      question: "What happens after I make a purchase?",
+      answer: "Upon completing your purchase, you'll immediately receive an automated email containing your software license key(s) along with detailed installation and activation instructions. This delivery is typically completed within 10-30 minutes. If you don't receive your email within 15 minutes, please check your spam folder or contact our 24/7 customer support team."
+    },
+    {
+      question: "What types of licenses do you sell?",
+      answer: "We offer several license types:\n* Retail Licenses: Full licenses with transfer rights\n* OEM Licenses: Tied to a single device but offer excellent value\n* Volume Licenses: Legitimate keys from authorized volume licensing programs\n* Subscription Licenses: Time-based access to software (typically 1-3 years)\nEach product listing clearly specifies the license type so you can make an informed decision."
+    },
+    {
+      question: "Can I use these keys for commercial purposes?",
+      answer: "Yes! Unless specifically noted otherwise, our licenses are valid for both personal and commercial use. Many of our business customers include design firms, IT companies, educational institutions, and independent professionals who rely on our legitimate keys for their daily operations."
+    },
+    {
+      question: "What if my key doesn't work?",
+      answer: "While extremely rare (<0.5% of orders), if you encounter any issues with your key, our technical support team is available 24/7 to assist. We'll first troubleshoot with you, and if the problem persists, we'll promptly provide a replacement key. If we can't resolve the issue, we'll process a full refund according to our 30-day money-back guarantee policy."
+    },
+    {
+      question: "Is my payment information secure?",
+      answer: "We take security seriously. Our payment processing system uses bank-grade SSL encryption and complies with PCI-DSS standards. We partner with trusted payment processors like PayPal, Stripe, and major credit card companies. We never store your complete payment information on our servers."
+    },
+    {
+      question: "How do I activate my software?",
+      answer: "Each order comes with detailed, step-by-step activation instructions tailored to your specific purchase. Generally, activation involves entering your key during software installation or through the software's activation menu. Our support team is available 24/7 if you need assistance with activation."
+    },
+    {
+      question: "What makes Keys-expertise.com different from other discount key sellers?",
+      answer: "Unlike many competitors, we:\n* Verify every key before listing it for sale\n* Offer a true 30-day money-back guarantee\n* Provide 24/7 technical support from software specialists\n* Maintain a 4.8/5 satisfaction rating from over 125,000 customers\n* Have a 5+ year track record of reliable service\n* Never sell gray market or questionable keys\nOur transparent business practices and commitment to customer satisfaction have made us the trusted choice for discounted software licenses since 2018."
+    }
+  ]
+};
+
 ---
 
 <Layout title='Cheap softwares & Activation keys for Windows & Mac at Discount - Keys Expertise' description='Save up to 70% on authentic Windows, Mac & software license keys with instant delivery. Verified digital products with guarantee & 24/7 customer support. Limited stock available now!'>
     <Hero title="Best Software License Keys " title2='& Digital Activation ' description="Cheap softwares & Activation keys for Windows & Mac, Verified digital products with guarantee & 24/7 customer support." imageUrl="/hero.png" />
     <AutodeskProductSection />
     <TrustSections />
+    <FAQ data={faqData} />
 </Layout>

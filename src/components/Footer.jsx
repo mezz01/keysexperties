@@ -3,10 +3,9 @@ import React from 'react';
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-gray-200">
-      {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto py-12 px-4 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Info */}
+    
           <div className="col-span-1 md:col-span-1">
             <h3 className="text-xl font-bold text-white mb-4">Keys-expertise.com</h3>
             <p className="text-gray-400 mb-4">Your trusted source for authentic software licenses at unbeatable prices.</p>
