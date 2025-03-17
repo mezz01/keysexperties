@@ -59,7 +59,6 @@ const { data } = Astro.props;
 </section>
 
 <script>
-  // Client-side JavaScript to handle the accordion functionality
   document.addEventListener('DOMContentLoaded', () => {
     const questions = document.querySelectorAll('.faq-question');
     let openIndex = null;
@@ -78,8 +77,6 @@ const { data } = Astro.props;
           openIndex = null;
           return;
         }
-        
-        // Close the currently open FAQ item if there is one
         if (openIndex !== null) {
           const openQuestion = document.querySelector(`.faq-question[data-index="${openIndex}"]`);
           const openAnswer = openQuestion.nextElementSibling;
@@ -89,8 +86,6 @@ const { data } = Astro.props;
           openQuestion.setAttribute('aria-expanded', 'false');
           openArrow.classList.remove('rotate-180');
         }
-        
-        // Open the clicked FAQ item
         answer.style.maxHeight = `${answer.scrollHeight}px`;
         question.setAttribute('aria-expanded', 'true');
         arrow.classList.add('rotate-180');
