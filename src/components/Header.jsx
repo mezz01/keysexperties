@@ -34,7 +34,7 @@ const Header = () => {
         {/* Logo */}
         <div className="flex items-center">
           <a href="/" className="text-xl font-bold text-cyan-600">
-          KEYS<span className="text-cyan-900">Experties</span>
+          Genuine<span className="text-cyan-900">Keys</span>
           </a>
         </div>
 

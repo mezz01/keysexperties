@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   trailingSlash: 'always',
-  site: 'https://keys-expertise.com',
+  site: 'https://genuine-keys.com',
   vite: {
     plugins: [tailwindcss()]
   },

@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
     
           <div className="col-span-1 md:col-span-1">
-            <h3 className="text-xl font-bold text-white mb-4">Keys-expertise.com</h3>
+            <h3 className="text-xl font-bold text-white mb-4">Genuine Keys</h3>
             <p className="text-gray-400 mb-4">Your trusted source for authentic software licenses at unbeatable prices.</p>
             <div className="flex space-x-4">
              
@@ -39,7 +39,7 @@ const Footer = () => {
       <div className="border-t border-gray-700">
         <div className="max-w-7xl mx-auto py-6 px-4 md:px-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} Keys-expertise.com. All rights reserved.
+            &copy; {new Date().getFullYear()} genuine-keys.com. All rights reserved.
           </p>
           <div className="flex space-x-6">
            
