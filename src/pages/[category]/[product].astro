@@ -23,7 +23,7 @@ const originalThreeYearsPrice = product.prices.threeYears / (1 - product.discoun
 const htmlContent = marked(product.description)
 ---
 
-<Layout title={` Buy ${product.name} License Key | ${product.discount}% Off | Instant Delivery | genuine-keys.com`} description=`Official ${product.name} license key for only ${product.prices.oneYear} - Save 75% vs retail. Authentic digital activation code with lifetime validity. Instant delivery & 24/7 support included.`>
+<Layout title={` Buy ${product.title} License Key | ${product.discount}% Off | Instant Delivery | genuine-keys.com`} description=`Official ${product.title} license key for only ${product.prices.oneYear} - Save 75% vs retail. Authentic digital activation code with lifetime validity. Instant delivery & 24/7 support included.`>
   <section class="flex flex-col lg:flex-row bg-cyan-200/30 mx-4 md:mx-8 lg:mx-24 my-8 lg:my-12 min-h-[50vh] gap-8 lg:gap-16 items-center justify-between p-6 md:p-12 lg:p-16 rounded-t-2xl">
     <div class="w-full lg:max-w-[60%] grid h-full relative">
       <div class="flex items-center mb-4">
@@ -37,7 +37,7 @@ const htmlContent = marked(product.description)
       </div>
       
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide">
-        {product.name} <br> {product.version} License
+        {product.title} <br> {product.version} License
       </h1>
       
       <p class="mt-6 lg:mt-10 text-lg md:text-xl max-w-full lg:max-w-[80%] font-light">
@@ -49,7 +49,7 @@ const htmlContent = marked(product.description)
         {product.prices.oneYear && (
           <a href={product.link} class="flex items-center justify-between bg-white hover:bg-cyan-50 border border-cyan-200 rounded-lg p-4 transition-all shadow-sm hover:shadow-md">
             <div>
-              <div class="font-medium">1 Year License</div>
+              <div class="font-medium">Get Your License</div>
               <div class="flex items-center">
                 <span class="text-gray-400 line-through text-sm">${originalOneYearPrice.toFixed(2)}</span>
                 <span class="text-xl font-bold text-cyan-600 ml-2">${product.prices.oneYear}</span>
@@ -230,7 +230,7 @@ const htmlContent = marked(product.description)
         </svg>
       </div>
     </div>
-    <p class="text-gray-600 mb-4">"I was skeptical at first but decided to give it a try. The license works perfectly with the latest {product.name} release. Great customer service too!"</p>
+    <p class="text-gray-600 mb-4">"I was skeptical at first but decided to give it a try. The license works perfectly with the latest {product.title} release. Great customer service too!"</p>
     <div class="font-medium">Sarah L.</div>
     <div class="text-gray-500 text-sm">Verified Customer</div>
   </div>
@@ -255,7 +255,7 @@ const htmlContent = marked(product.description)
         </svg>
       </div>
     </div>
-    <p class="text-gray-600 mb-4">"Excellent service! I received my {product.name} license key within minutes of purchase. The savings are incredible and everything is working perfectly."</p>
+    <p class="text-gray-600 mb-4">"Excellent service! I received my {product.title} license key within minutes of purchase. The savings are incredible and everything is working perfectly."</p>
     <div class="font-medium">David T.</div>
     <div class="text-gray-500 text-sm">Verified Customer</div>
   </div>
@@ -274,7 +274,7 @@ const htmlContent = marked(product.description)
     <div class="bg-white rounded-xl shadow-md overflow-hidden">
       <div class="p-6">
         <h3 class="text-xl font-semibold text-gray-800 mb-2">Are these license keys genuine?</h3>
-        <p class="text-gray-600">Yes, all our license keys are 100% genuine and sourced through authorized channels. They are official {product.name} licenses that provide full access to all features.</p>
+        <p class="text-gray-600">Yes, all our license keys are 100% genuine and sourced through authorized channels. They are official {product.title} licenses that provide full access to all features.</p>
       </div>
     </div>
     
@@ -313,8 +313,8 @@ const htmlContent = marked(product.description)
 <section class="mx-4 md:mx-8 lg:mx-24 my-16">
 <div class="bg-gradient-to-r from-cyan-600 to-cyan-800 rounded-xl shadow-xl overflow-hidden">
   <div class="p-8 md:p-12 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Save on {product.name}?</h2>
-    <p class="text-white text-lg mb-8 max-w-2xl mx-auto">Get your genuine {product.name} license key now and save up to 80% off retail price. Instant delivery and complete peace of mind.</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Save on {product.title}?</h2>
+    <p class="text-white text-lg mb-8 max-w-2xl mx-auto">Get your genuine {product.title} license key now and save up to 80% off retail price. Instant delivery and complete peace of mind.</p>
     <a href={product.link} class="inline-flex items-center justify-center bg-white hover:bg-gray-100 text-cyan-700 font-bold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl">
       Buy Now
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

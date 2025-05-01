@@ -1,47 +1,47 @@
 export const autodeskProducts = [
-    {
-      id: "autocad-2025",
-      category: "autodesk",
-      categoryImg: "/autd.png",
-      name: "AutoCAD",
-      title: "AutoDesk AutoCAD 2024 - 2025",
-      description: "Professional 2D/3D CAD design and drafting software",
-      version: "2024-2025",
-      licenseType: ["1 year", "3 years", "Lifetime"],
-      image: "/aucad.jpg",
-      prices: {
-        oneYear: 99,
-        threeYears: 279,
-        lifetime: null
-      },
-      description:`
+  {
+    id: "autocad-2025",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "AutoCAD",
+    title: "AutoDesk AutoCAD 2024 - 2025",
+    description: "Professional 2D/3D CAD design and drafting software",
+    version: "2024-2025",
+    licenseType: ["1 year", "3 years", "Lifetime"],
+    image: "/aucad.jpg",
+    prices: {
+      oneYear: 99,
+      threeYears: null,
+      lifetime: null
+    },
+    description:`
 ## AutoCAD License 2024 -- 2025 Product Key Full -- 1 Year -- 3 Years Activation
 
 2D Drafting -- 3D Modeling and Visualization for Windows and Mac
 ---------------------------------------------------------------
 
-Buy your AutoCAD license for 2024 Full Version for Windows and Mac, available for 1 PC subscription on Genuine keys at the best price in the online market! Receive your AutoCAD 2024 license in your account within minutes via email. To avoid missing the email, please check your spam or junk mail folder too! Download and buy AutoCAD 2024 license -- 2025 latest full version offline complete setup. AutoCAD 2024 -- 2025 license is a professional-grade CAD application that delivers the ultimate level of precision and complete command line support to design almost anything.
+Buy your AutoCAD license for 2024 Full Version for Windows and Mac, available for 1 PC subscription on Genuine keys at the best price in the online market! Receive your AutoCAD 2024 license in your account within minutes via email. To avoid missing the email, please check your spam or junk mail folder too! Download and buy AutoCAD 2024 license -- 2025 latest full version offline complete setup. AutoCAD 2024 -- 2025 license is a professional-grade CAD application that delivers the ultimate level of precision and complete command line support to design almost anything.
 
 ### What Will I Receive if I Buy an AutoCAD License:
 
 -   The product is delivered via email.
 -   Direct download link of the software from the official Autodesk website.
--   Genuine Serial Key of AutoDesk AutoCAD license.
+-   Genuine Serial Key of AutoDesk AutoCAD license.
 -   No monthly fees or subscription renewals.
 -   Fast delivery guaranteed via email.
 -   Free technical support.
 
 ### How to Buy an AutoCAD License:
 
-Click the "Buy Now" button, enter your details, and pay with PayPal. You will then receive your AutoCAD license via email.
+Click the "Buy Now" button, enter your details, and pay with PayPal. You will then receive your AutoCAD license via email.
 
 ### Why Does Genuine keys Offer Autodesk Keys at a Low Price?
 
-We offer retail licenses that have been used and reassigned by the previous owner in accordance with E.C. ruling C-128/2011. This allows us to provide official Autodesk licenses on our site at a reduced cost. After this process, the key is essentially new and considered never used. We then assign the subscription to your personal email, enabling you to download the software directly from Autodesk's official website, giving you full legal access to your AutoCAD license.
+We offer retail licenses that have been used and reassigned by the previous owner in accordance with E.C. ruling C-128/2011. This allows us to provide official Autodesk licenses on our site at a reduced cost. After this process, the key is essentially new and considered never used. We then assign the subscription to your personal email, enabling you to download the software directly from Autodesk's official website, giving you full legal access to your AutoCAD license.
 
 ### Buy AutoCAD License 2024 -- Overview:
 
-AutoCAD license is computer-aided design (CAD) software that architects, engineers, and construction professionals rely on to create precise 2D and 3D drawings. Import a wide variety of other formats, including SolidWorks, Pro/ENGINEER, CATIA, Rhino, and when an engineering change is made, drawing views, edge display, and location are instantly updated. The drafting, detailing, and conceptual design leader is showing the way once again. AutoCAD 2024 license propels day-to-day drafting forward with features that increase speed and accuracy while saving time. Annotation scaling and layer properties per viewport minimize workarounds, while text and table enhancements and multiple leaders help deliver an unmatched level of aesthetic precision and professionalism.
+AutoCAD license is computer-aided design (CAD) software that architects, engineers, and construction professionals rely on to create precise 2D and 3D drawings. Import a wide variety of other formats, including SolidWorks, Pro/ENGINEER, CATIA, Rhino, and when an engineering change is made, drawing views, edge display, and location are instantly updated. The drafting, detailing, and conceptual design leader is showing the way once again. AutoCAD 2024 license propels day-to-day drafting forward with features that increase speed and accuracy while saving time. Annotation scaling and layer properties per viewport minimize workarounds, while text and table enhancements and multiple leaders help deliver an unmatched level of aesthetic precision and professionalism.
 
 ### System Requirements and Technical Details:
 
@@ -84,29 +84,29 @@ We offer all Autodesk products for Windows and Mac, including:
 -   AutoCAD PowerShape
 -   AutoCAD Navisworks Simulate
 
-While not all of our available software is listed on our website, we encourage you to contact us at contact@Genuine-keys.com to inquire about any specific software you may need. Our team is always happy to help you find the right tool for the job. Buy your AutoCAD license now for the best deals!
-      `,
-      discount: 70,
-      activationType: "Instant Digital Activation",
-      link: "https://obhsoftwares.com/product/buy-autocad-license-2024-cheap-price/",
-      featured: true
+While not all of our available software is listed on our website, we encourage you to contact us at contact@Genuine-keys.com to inquire about any specific software you may need. Our team is always happy to help you find the right tool for the job. Buy your AutoCAD license now for the best deals!
+    `,
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/buy-autocad-license-2024-cheap-price/",
+    featured: true
+  },
+  {
+    id: "revit-2025",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "Revit",
+    title: "Autodesk Revit 2024 - 2025",
+    description: "BIM software for architecture, engineering and construction",
+    version: "2024-2025",
+    licenseType: ["1 year", "3 years", "Lifetime"],
+    image: "/revit.jpg",
+    prices: {
+      oneYear: 99,
+      threeYears: null,
+      lifetime: null
     },
-    {
-      id: "revit-2025",
-      category: "autodesk",
-      categoryImg: "/autd.png",
-      name: "Revit",
-      title: "Autodesk Revit 2024 - 2025",
-      description: "BIM software for architecture, engineering and construction",
-      version: "2024-2025",
-      licenseType: ["1 year", "3 years", "Lifetime"],
-      image: "/revit.jpg",
-      prices: {
-        oneYear: 99,
-        threeYears: 279,
-        lifetime: null
-      },
-        description:`
+      description:`
 
 Autodesk Revit 2025 License -- Full Version BIM Software for Architecture & Engineering
 --------------------------------------------------------------------------
@@ -167,29 +167,30 @@ Don't settle for outdated software or expensive subscription models. With Genuin
 
 Purchase your Autodesk Revit 2025 license today and experience the future of building information modeling!
 
-*For questions about this product or other Autodesk solutions, please contact our support team at <contact@Genuine-keys.com>.*`,
-            
-      discount: 70,
-      activationType: "Instant Digital Activation",
-      link: "https://obhsoftwares.com/product/buy-revit-download-2024-cheap/",
-      featured: true
+*For questions about this product or other Autodesk solutions, please contact our support team at <contact@Genuine-keys.com>.*
+      `,
+
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/buy-revit-download-2024-cheap/",
+    featured: true
+  },
+  {
+    id: "fusion-360",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "Fusion 360",
+    title: "Autodesk Fusion 360",
+    description: "Integrated CAD, CAM, CAE, and PCB software platform",
+    version: "2024-2025",
+    licenseType: ["1 year", "3 years", "Lifetime"],
+    image: "/fusion.jpg",
+    prices: {
+      oneYear: 99,
+      threeYears: null,
+      lifetime: null
     },
-    {
-      id: "fusion-360",
-      category: "autodesk",
-      categoryImg: "/autd.png",
-      name: "Fusion 360",
-      title: "Autodesk Fusion 360",
-      description: "Integrated CAD, CAM, CAE, and PCB software platform",
-      version: "2024-2025",
-      licenseType: ["1 year", "3 years", "Lifetime"],
-      image: "/fusion.jpg",
-      prices: {
-        oneYear: 99,
-        threeYears: 279,
-        lifetime: null
-      },
-        description:`
+      description:`
 Autodesk Fusion 360 2024-2025 License -- Complete CAD/CAM Software Solution
 ------------------------------------------------------------------------------
 
@@ -262,28 +263,28 @@ Don't compromise with limited-feature versions or expensive subscription plans. 
 Purchase your Autodesk Fusion 360 2024-2025 license today and experience the future of integrated design!
 
 *For questions about this product or other Autodesk solutions, please contact our support team at <contact@Genuine-keys.com>.*
-        ` ,
-      discount: 70,
-      activationType: "Instant Digital Activation",
-      link: "https://obhsoftwares.com/product/buy-fusion-360-price-download-software/",
-      featured: false
+      ` ,
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/buy-fusion-360-price-download-software/",
+    featured: false
+  },
+  {
+    id: "inventor-2025",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "Inventor",
+    title: "AutoDesk Inventor 2025",
+    description: "Professional-grade 3D mechanical design software",
+    version: "2025",
+    licenseType: ["1 year", "3 years", "Lifetime"],
+    image: "/inventor.jpg",
+    prices: {
+      oneYear: 99,
+      threeYears: null,
+      lifetime: null
     },
-    {
-      id: "inventor-2025",
-      category: "autodesk",
-      categoryImg: "/autd.png",
-      name: "Inventor",
-      title: "AutoDesk Inventor 2025",
-      description: "Professional-grade 3D mechanical design software",
-      version: "2025",
-      licenseType: ["1 year", "3 years", "Lifetime"],
-      image: "/inventor.jpg",
-      prices: {
-        oneYear: 99,
-        threeYears: 279,
-        lifetime: null
-      },
-        description:`
+      description:`
 Autodesk Inventor 2025 License -- Professional 3D Mechanical Design Software
 ----------------------------------------------------------------------------------
 
@@ -333,28 +334,28 @@ We specialize in providing legitimate retail licenses at competitive prices. Thi
 Transform your mechanical design workflow with Autodesk Inventor 2025. Purchase your license today and experience professional-grade 3D design tools at an exceptional price.
 
 *For questions about this product or other Autodesk solutions, contact our support team at <contact@Genuine-keys.com>.*
-        `,
-      discount: 70,
-      activationType: "Instant Digital Activation",
-      link: "https://obhsoftwares.com/product/buy-autodesk-inventor-2024-license/",
-      featured: false
+      `,
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/buy-autodesk-inventor-2024-license/",
+    featured: false
+  },
+  {
+    id: "autocad-architecture-2025",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "AutoCAD Architecture",
+    title: "AutoDesk AutoCAD Architecture 2025",
+    description: "Architectural design and documentation software",
+    version: "2025",
+    licenseType: ["1 year", "3 years", "Lifetime"],
+    image: "/AutoCad-architecture.jpg",
+    prices: {
+      oneYear: 99,
+      threeYears: null,
+      lifetime: null
     },
-    {
-      id: "autocad-architecture-2025",
-      category: "autodesk",
-      categoryImg: "/autd.png",
-      name: "AutoCAD Architecture",
-      title: "AutoDesk AutoCAD Architecture 2025",
-      description: "Architectural design and documentation software",
-      version: "2025",
-      licenseType: ["1 year", "3 years", "Lifetime"],
-      image: "/AutoCad-architecture.jpg",
-      prices: {
-        oneYear: 99,
-        threeYears: 279,
-        lifetime: null
-      },
-    description:`
+  description:`
 AutoCAD Architecture 2025 License -- Specialized CAD Software for Architectural Design
 ----------------------------------------------------------------------------------------
 
@@ -405,29 +406,29 @@ We specialize in providing legitimate retail licenses at competitive prices. Thi
 Upgrade your architectural design workflow with AutoCAD Architecture 2025. Purchase your license today and experience purpose-built architectural tools that significantly boost productivity and drawing quality.
 
 *For questions about this product or other Autodesk solutions, contact our support team at <contact@Genuine-keys.com>.*
-    `,
-      discount: 70,
-      activationType: "Instant Digital Activation",
-      link: "https://obhsoftwares.com/product/autodesk-autocad-2025-architecture/",
-      featured: false
+  `,
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/autodesk-autocad-2025-architecture/",
+    featured: false
+  },
+  {
+    id: "autocad-electrical-2025",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "AutoCAD Electrical",
+    title: "AutoDesk AutoCAD Electrical 2025",
+    description: "Electrical design software for controls systems",
+    version: "2025",
+    licenseType: ["1 year", "3 years", "Lifetime"],
+    image: "/autocad-Electrical.jpg",
+    prices: {
+      oneYear: 99,
+      threeYears: null,
+      lifetime: null
     },
-    {
-      id: "autocad-electrical-2025",
-      category: "autodesk",
-      categoryImg: "/autd.png",
-      name: "AutoCAD Electrical",
-      title: "AutoDesk AutoCAD Electrical 2025",
-      description: "Electrical design software for controls systems",
-      version: "2025",
-      licenseType: ["1 year", "3 years", "Lifetime"],
-      image: "/autocad-Electrical.jpg",
-      prices: {
-        oneYear: 99,
-        threeYears: 279,
-        lifetime: null
-      },
-        description:`
-        AutoCAD Electrical 2025 License -- Specialized Software for Electrical Design and Documentation
+      description:`
+      AutoCAD Electrical 2025 License -- Specialized Software for Electrical Design and Documentation
 ----------------------------------------------------------------------------------------------
 
 Looking for professional electrical design software? **AutoCAD Electrical 2025** provides specialized tools for creating, modifying, and documenting electrical control systems. At Genuine Keys, we offer authentic AutoCAD Electrical licenses at competitive prices with immediate digital delivery.
@@ -478,22 +479,192 @@ We specialize in providing legitimate retail licenses at competitive prices. Thi
 Optimize your electrical design workflow with AutoCAD Electrical 2025. Purchase your license today and experience the industry-standard solution for electrical control systems design at an exceptional price.
 
 *For questions about this product or other Autodesk solutions, contact our support team at <contact@Genuine-keys.com>.*
-        `,
-      discount: 70,
-      activationType: "Instant Digital Activation",
-      link: "https://obhsoftwares.com/product/autocad-2025-electrical/",
-      featured: false
-    }
-  ];
-
-
-  export function slugify(text) {
-    return text
-      .toString()
-      .toLowerCase()
-      .replace(/\s+/g, '-')       // Replace spaces with -
-      .replace(/[^\w\-]+/g, '')   // Remove all non-word chars
-      .replace(/\-\-+/g, '-')     // Replace multiple - with single -
-      .replace(/^-+/, '')         // Trim - from start of text
-      .replace(/-+$/, '');        // Trim - from end of text
+      `,
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/autocad-2025-electrical/",
+    featured: false
+  },
+  {
+    id: "autodesk-3ds-max-2023-full-activated-for-windows-life-time",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "autodesk-3ds-max-2023-full-activated-for-windows-life-time",
+    title: "Autodesk 3DS MAX 2023 Full Activated For WINDOWS Life time",
+    description: `Description placeholder for Autodesk 3DS MAX 2023 Full Activated For WINDOWS Life time`,
+    version: "2023",
+    platform: "WINDOWS",
+    licenseType: ["Lifetime"],
+    image: "https://obhsoftwares.com/wp-content/uploads/2022/11/3DS-MAX-2023-LIFEITM.png",
+    prices: {"oneYear":279,"threeYears":null,"lifetime":null},
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/autodesk-3ds-max-2023-full-activated-for-windows-life-time/",
+    featured: false
+  },
+  {
+    id: "autodesk-autocad-2021-full-activated-for-windows-life-time",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "autodesk-autocad-2021-full-activated-for-windows-life-time",
+    title: "AutoDesk AutoCAD 2021 Full Activated For WINDOWS Life time",
+    description: `Description placeholder for AutoDesk AutoCAD 2021 Full Activated For WINDOWS Life time`,
+    version: "2021",
+    platform: "WINDOWS",
+    licenseType: ["Lifetime"],
+    image: "https://obhsoftwares.com/wp-content/uploads/2022/11/AUTOCAD-2021-WINDOWS-LIFETIME.png",
+    prices: {"oneYear":99,"threeYears":null,"lifetime":null},
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/autodesk-autocad-2021-full-activated-for-windows-life-time/",
+    featured: false
+  },
+  {
+    id: "autodesk-autocad-2022-full-activated-for-windows-life-time",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "autodesk-autocad-2022-full-activated-for-windows-life-time",
+    title: "AutoDesk AutoCAD 2022 Full Activated For WINDOWS Life time",
+    description: `Description placeholder for AutoDesk AutoCAD 2022 Full Activated For WINDOWS Life time`,
+    version: "2022",
+    platform: "WINDOWS",
+    licenseType: ["Lifetime"],
+    image: "https://obhsoftwares.com/wp-content/uploads/2022/10/neez.png",
+    prices: {"oneYear":229,"threeYears":null,"lifetime":null},
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/autodesk-autocad-2022-full-activated-for-windows-life-time/",
+    featured: false
+  },
+  {
+    id: "autodesk-autocad-2022-mac-full-activated-for-lifetime",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "autodesk-autocad-2022-mac-full-activated-for-lifetime",
+    title: "AutoDesk AutoCAD 2022 MAC Full Activated For Lifetime",
+    description: `Description placeholder for AutoDesk AutoCAD 2022 MAC Full Activated For Lifetime`,
+    version: "2022",
+    platform: "MAC",
+    licenseType: ["Lifetime"],
+    image: "https://obhsoftwares.com/wp-content/uploads/2022/11/AUTOCAD-2022-MAC-LIFETIME.png",
+    prices: {"oneYear":229,"threeYears":null,"lifetime":null},
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/autodesk-autocad-2022-mac-full-activated-for-lifetime/",
+    featured: false
+  },
+  {
+    id: "autodesk-autocad-2024-mac-full-activated-for-lifetime",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "autodesk-autocad-2024-mac-full-activated-for-lifetime",
+    title: "AutoDesk AutoCAD 2024 MAC Full Activated For Lifetime",
+    description: `Description placeholder for AutoDesk AutoCAD 2024 MAC Full Activated For Lifetime`,
+    version: "2024",
+    platform: "MAC",
+    licenseType: ["Lifetime"],
+    image: "https://obhsoftwares.com/wp-content/uploads/2023/10/Autodesk-AutoCAD-2024.jpg",
+    prices: {"oneYear":490,"threeYears":null,"lifetime":null},
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/autodesk-autocad-2024-mac-full-activated-for-lifetime/",
+    featured: false
+  },
+  {
+    id: "autodesk-autocad-2024-windows-full-activated-for-lifetime",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "autodesk-autocad-2024-windows-full-activated-for-lifetime",
+    title: "AutoDesk AutoCAD 2024 Windows Full Activated For Lifetime",
+    description: `Description placeholder for AutoDesk AutoCAD 2024 Windows Full Activated For Lifetime`,
+    version: "2024",
+    platform: "WINDOWS",
+    licenseType: ["Lifetime"],
+    image: "https://obhsoftwares.com/wp-content/uploads/2024/05/Design-sans-titrekk.jpg",
+    prices: {"oneYear":490,"threeYears":null,"lifetime":null},
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/autodesk-autocad-2024-windows-full-activated-for-lifetime/",
+    featured: false
+  },
+  {
+    id: "revit-2023-autodesk-full-activated-for-windows-life-time",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "revit-2023-autodesk-full-activated-for-windows-life-time",
+    title: "Revit 2023 Autodesk Full Activated For WINDOWS Life time",
+    description: `Description placeholder for Revit 2023 Autodesk Full Activated For WINDOWS Life time`,
+    version: "2023",
+    platform: "WINDOWS",
+    licenseType: ["Lifetime"],
+    image: "https://obhsoftwares.com/wp-content/uploads/2022/11/REVIT-2023-LIFEITME.png",
+    prices: {"oneYear":279,"threeYears":null,"lifetime":null},
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/revit-2023-autodesk-full-activated-for-windows-life-time/",
+    featured: false
+  },
+  {
+    id: "autodesk-3ds-max-2023-full-activated-for-mac-1-year",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "autodesk-3ds-max-2023-full-activated-for-mac-1-year",
+    title: "Autodesk 3DS MAX 2023 Full Activated For MAC - 1 Year",
+    description: `Description placeholder for Autodesk 3DS MAX 2023 Full Activated For MAC - 1 Year`,
+    version: "2023",
+    platform: "MAC",
+    licenseType: ["1 year"],
+    image: "https://obhsoftwares.com/wp-content/uploads/2022/11/3DS-MAX-2023-MAC-1-YEAR.png",
+    prices: {"oneYear":74,"threeYears":null,"lifetime":null},
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/autodesk-3ds-max-2023-full-activated-for-mac-1-year/",
+    featured: false
+  },
+  {
+    id: "autodesk-3ds-max-2023-full-version-for-windows-1-year-key",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "autodesk-3ds-max-2023-full-version-for-windows-1-year-key",
+    title: "Autodesk 3DS MAX 2023 Full Version for Windows - 1 Year Key",
+    description: `Description placeholder for Autodesk 3DS MAX 2023 Full Version for Windows - 1 Year Key`,
+    version: "2023",
+    platform: "WINDOWS",
+    licenseType: ["1 year"],
+    image: "https://obhsoftwares.com/wp-content/uploads/2022/10/3DS-MAX-2023-WINDOWS-1-YEAR-1.png",
+    prices: {"oneYear":74,"threeYears":null,"lifetime":null},
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/autodesk-3ds-max-2023-full-version-for-windows-1-year-key/",
+    featured: false
+  },
+  {
+    id: "autodesk-autocad-2023-full-activated-for-mac-1-year-key",
+    category: "autodesk",
+    categoryImg: "/autd.png",
+    name: "autodesk-autocad-2023-full-activated-for-mac-1-year-key",
+    title: "AutoDesk AutoCAD 2023 Full Activated For MAC - 1 Year Key",
+    description: `Description placeholder for AutoDesk AutoCAD 2023 Full Activated For MAC - 1 Year Key`,
+    version: "2023",
+    platform: "MAC",
+    licenseType: ["1 year"],
+    image: "https://obhsoftwares.com/wp-content/uploads/2022/10/AUTOCAD-2024-MAC-3-YEARS.png",
+    prices: {"oneYear":74,"threeYears":null,"lifetime":null},
+    discount: 70,
+    activationType: "Instant Digital Activation",
+    link: "https://obhsoftwares.com/product/autodesk-autocad-2023-full-activated-for-mac-1-year-key/",
+    featured: false
   }
+];
+
+
+export function slugify(text) {
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, '-')      // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')   // Remove all non-word chars
+    .replace(/\-\-+/g, '-')      // Replace multiple - with single -
+    .replace(/^-+/, '')          // Trim - from start of text
+    .replace(/-+$/, '');         // Trim - from end of text
+}
