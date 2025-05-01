@@ -20,7 +20,7 @@ export const autodeskProducts = [
 2D Drafting -- 3D Modeling and Visualization for Windows and Mac
 ---------------------------------------------------------------
 
-Buy your AutoCAD license for 2024 Full Version for Windows and Mac, available for 1 PC subscription on Obhsoftwares at the best price in the online market! Receive your AutoCAD 2024 license in your account within minutes via email. To avoid missing the email, please check your spam or junk mail folder too! Download and buy AutoCAD 2024 license -- 2025 latest full version offline complete setup. AutoCAD 2024 -- 2025 license is a professional-grade CAD application that delivers the ultimate level of precision and complete command line support to design almost anything.
+Buy your AutoCAD license for 2024 Full Version for Windows and Mac, available for 1 PC subscription on Genuine keys at the best price in the online market! Receive your AutoCAD 2024 license in your account within minutes via email. To avoid missing the email, please check your spam or junk mail folder too! Download and buy AutoCAD 2024 license -- 2025 latest full version offline complete setup. AutoCAD 2024 -- 2025 license is a professional-grade CAD application that delivers the ultimate level of precision and complete command line support to design almost anything.
 
 ### What Will I Receive if I Buy an AutoCAD License:
 
@@ -35,7 +35,7 @@ Buy your AutoCAD license for 2024 Full Version for Windows and Mac, available 
 
 Click the "Buy Now" button, enter your details, and pay with PayPal. You will then receive your AutoCAD license via email.
 
-### Why Does OBHSOFTWARES Offer Autodesk Keys at a Low Price?
+### Why Does Genuine keys Offer Autodesk Keys at a Low Price?
 
 We offer retail licenses that have been used and reassigned by the previous owner in accordance with E.C. ruling C-128/2011. This allows us to provide official Autodesk licenses on our site at a reduced cost. After this process, the key is essentially new and considered never used. We then assign the subscription to your personal email, enabling you to download the software directly from Autodesk's official website, giving you full legal access to your AutoCAD license.
 
@@ -84,7 +84,7 @@ We offer all Autodesk products for Windows and Mac, including:
 -   AutoCAD PowerShape
 -   AutoCAD Navisworks Simulate
 
-While not all of our available software is listed on our website, we encourage you to contact us at contact@obhsoftwares.com to inquire about any specific software you may need. Our team is always happy to help you find the right tool for the job. Buy your AutoCAD license now for the best deals!
+While not all of our available software is listed on our website, we encourage you to contact us at contact@Genuine-keys.com to inquire about any specific software you may need. Our team is always happy to help you find the right tool for the job. Buy your AutoCAD license now for the best deals!
       `,
       discount: 70,
       activationType: "Instant Digital Activation",
