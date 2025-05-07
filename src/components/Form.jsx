@@ -132,7 +132,7 @@ const Form = ({ yourEmail }) => {
                             onChange={(e) => setEmail(e.target.value)}
                             className="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-shadow sm:text-sm" 
                             required 
-                            placeholder="Your Email for Confirmation (where your order will be delivered)"
+                            placeholder="Your Email (where your order will be delivered)"
                         />
                     </div>
 
