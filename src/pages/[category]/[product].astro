@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { autodeskProducts, slugify } from '../../products/autodesk.js'; // Adjust path if needed
+// Ensure this path is correct for your project structure
+import { autodeskProducts, slugify } from '../../products/autodesk.js'; 
 import { marked } from 'marked';
 import Form from '../../components/Form.jsx'; // Import the React component
 
@@ -8,7 +9,7 @@ export async function getStaticPaths() {
   return autodeskProducts.map(product => ({
     params: { 
       category: product.category,
-      product: slugify(product.name),
+      product: slugify(product.name), // Make sure slugify handles names correctly
     },
     props: { product }
   }));
@@ -16,15 +17,40 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props;
 
-const originalOneYearPrice = product.prices.oneYear ? (product.prices.oneYear / (1 - product.discount/100)) : 0;
-const originalThreeYearsPrice = product.prices.threeYears ? (product.prices.threeYears / (1 - product.discount/100)) : 0;
+// Ensure prices are numbers before calculations
+const oneYearPriceNum = typeof product.prices.oneYear === 'number' ? product.prices.oneYear : null;
+const threeYearsPriceNum = typeof product.prices.threeYears === 'number' ? product.prices.threeYears : null;
+const lifetimePriceNum = typeof product.prices.lifetime === 'number' ? product.prices.lifetime : null;
 
-const htmlContent = marked(product.description);
+
+const originalOneYearPrice = oneYearPriceNum && product.discount > 0 && product.discount < 100 
+  ? (oneYearPriceNum / (1 - product.discount/100)) 
+  : (oneYearPriceNum ? oneYearPriceNum * 1.25 : 0); // Fallback if discount is 0 or invalid
+
+const originalThreeYearsPrice = threeYearsPriceNum && product.discount > 0 && product.discount < 100
+  ? (threeYearsPriceNum / (1 - product.discount/100)) 
+  : (threeYearsPriceNum ? threeYearsPriceNum * 1.25 : 0); // Fallback
+
+const htmlContent = product.description ? marked(product.description) : '<p>No description available.</p>';
 
 // --- IMPORTANT ---
 // ** REPLACE THIS WITH YOUR ACTUAL FORMSUBMIT EMAIL ADDRESS **
 const yourFormSubmitEmail = "medmezzat1964@gmail.com"; 
+// You MUST replace the email above with your real FormSubmit email.
 // -----------------
+
+// Helper to format price strings, handling nulls
+const formatPrice = (price: number | null, originalPrice?: number | null) => {
+  if (price === null) return { current: '', original: '' };
+  const currentFormatted = `$${price.toFixed(2)}`;
+  const originalFormatted = (originalPrice && originalPrice > price) ? `$${originalPrice.toFixed(2)}` : '';
+  return { current: currentFormatted, original: originalFormatted };
+};
+
+const oneYearDisplay = formatPrice(oneYearPriceNum, originalOneYearPrice);
+const threeYearsDisplay = formatPrice(threeYearsPriceNum, originalThreeYearsPrice);
+const lifetimeDisplay = formatPrice(lifetimePriceNum);
+
 ---
 
 <Layout 
@@ -33,85 +59,100 @@ const yourFormSubmitEmail = "medmezzat1964@gmail.com";
 >
   <section class="flex flex-col lg:flex-row bg-cyan-200/30 mx-4 md:mx-8 lg:mx-24 my-8 lg:my-12 min-h-[50vh] gap-8 lg:gap-16 items-center justify-between p-6 md:p-12 lg:p-16 rounded-t-2xl">
     <div class="w-full lg:max-w-[60%] grid h-full relative">
-      <div class="flex items-center mb-4">
-        <span class="bg-cyan-500 text-white px-6 py-3 rounded-full text-sm font-medium inline-flex items-center">
-          {product.discount}% OFF
-          <span class="relative ml-2">
-            <span class="absolute inline-flex h-3 w-3 rounded-full bg-white opacity-75 animate-ping"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+      {product.discount > 0 && (
+        <div class="flex items-center mb-4">
+          <span class="bg-cyan-500 text-white px-6 py-3 rounded-full text-sm font-medium inline-flex items-center">
+            {product.discount}% OFF
+            <span class="relative ml-2">
+              <span class="absolute inline-flex h-3 w-3 rounded-full bg-white opacity-75 animate-ping"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+            </span>
           </span>
-        </span>
-      </div>
+        </div>
+      )}
+      
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide">
-        {product.title} <br /> {product.version} License
+        {product.title} <br /> {product.version ? `${product.version} License` : 'License'}
       </h1>
+      
       <p class="mt-6 lg:mt-10 text-lg md:text-xl max-w-full lg:max-w-[80%] font-light">
-        Genuine {product.title} license key with instant delivery. Save {product.discount}% off retail price with our official {product.activationType}.
+        Genuine {product.title} license key with instant delivery. 
+        {product.discount > 0 && `Save ${product.discount}% off retail price with our official`} 
+        {product.activationType ? ` ${product.activationType}.` : '.'}
       </p>
 
-      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {product.prices.oneYear && (
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {oneYearPriceNum !== null && (
           <button 
             type="button" 
-            class="flex items-center justify-between bg-white hover:bg-cyan-50 border border-cyan-200 rounded-lg p-4 transition-all shadow-sm hover:shadow-md text-left cursor-pointer"
-            onclick={`window.triggerPurchaseForm && window.triggerPurchaseForm('${product.title} (1 Year)', '${product.prices.oneYear.toFixed(2)}')`}
+            class="col-span-1 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg p-4 transition-all shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 cursor-pointer flex items-center justify-between w-full"
+            onclick={`if(window.triggerPurchaseForm) { window.triggerPurchaseForm('${product.title} (1 Year)', '${oneYearPriceNum.toFixed(2)}') } else { console.error('Purchase form trigger not ready.') }`}
           >
-            <div>
-              <div class="font-medium">Get Your License</div>
-              <div class="flex items-center">
-                <span class="text-gray-400 line-through text-sm">${originalOneYearPrice.toFixed(2)}</span>
-                <span class="text-xl font-bold text-cyan-600 ml-2">${product.prices.oneYear.toFixed(2)}</span>
-              </div>
+            <div class="text-left">
+              <div class="font-semibold text-lg leading-tight">Buy Now</div>
+              <div class="text-xs text-cyan-100 leading-tight">1 Year License</div>
             </div>
-            <div class="bg-cyan-600 text-white p-2 rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            <div class="text-right">
+              {oneYearDisplay.original && <span class="text-xs line-through text-cyan-200 block">{oneYearDisplay.original}</span>}
+              <span class="text-xl font-bold">{oneYearDisplay.current}</span>
             </div>
           </button>
         )}
         
-        {product.prices.threeYears && (
+        {threeYearsPriceNum !== null && (
           <button 
             type="button" 
-            class="flex items-center justify-between bg-gradient-to-r from-cyan-50 to-cyan-100 border border-cyan-200 rounded-lg p-4 transition-all shadow-md hover:shadow-lg relative text-left cursor-pointer"
-            onclick={`window.triggerPurchaseForm && window.triggerPurchaseForm('${product.title} (3 Years)', '${product.prices.threeYears.toFixed(2)}')`}
+            class="col-span-1 bg-cyan-700 hover:bg-cyan-800 text-white rounded-lg p-4 transition-all shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-cyan-600 focus:ring-offset-2 cursor-pointer flex items-center justify-between w-full relative"
+            onclick={`if(window.triggerPurchaseForm) { window.triggerPurchaseForm('${product.title} (3 Years)', '${threeYearsPriceNum.toFixed(2)}') } else { console.error('Purchase form trigger not ready.') }`}
           >
-            <div class="absolute -top-2 left-4 bg-cyan-600 text-white px-2 py-0.5 rounded-full text-xs font-medium">Best Value</div>
-            <div>
-              <div class="font-medium">3 Year License</div>
-              <div class="flex items-center">
-                <span class="text-gray-400 line-through text-sm">${originalThreeYearsPrice.toFixed(2)}</span>
-                <span class="text-xl font-bold text-cyan-600 ml-2">${product.prices.threeYears.toFixed(2)}</span>
-              </div>
+            <div class="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-yellow-400 text-cyan-800 px-3 py-0.5 rounded-full text-xs font-bold shadow-sm">
+              Best Value
             </div>
-             <div class="bg-cyan-600 text-white p-2 rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            <div class="text-left pt-2"> {/* Added pt-2 to make space for badge */}
+              <div class="font-semibold text-lg leading-tight">Buy Now</div>
+              <div class="text-xs text-cyan-100 leading-tight">3 Year License</div>
+            </div>
+            <div class="text-right pt-2"> {/* Added pt-2 */}
+              {threeYearsDisplay.original && <span class="text-xs line-through text-cyan-200 block">{threeYearsDisplay.original}</span>}
+              <span class="text-xl font-bold">{threeYearsDisplay.current}</span>
             </div>
           </button>
         )}
         
-        {product.prices.lifetime != null && (
+        {lifetimePriceNum !== null && (
           <button 
             type="button" 
-            class="flex items-center justify-between bg-white hover:bg-cyan-50 border border-cyan-200 rounded-lg p-4 transition-all shadow-sm hover:shadow-md col-span-1 sm:col-span-2 text-left cursor-pointer"
-            onclick={`window.triggerPurchaseForm && window.triggerPurchaseForm('${product.title} (Lifetime)', '${product.prices.lifetime.toFixed(2)}')`}
+            class="sm:col-span-2 bg-slate-700 hover:bg-slate-800 text-white rounded-lg p-4 transition-all shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 cursor-pointer flex items-center justify-between w-full"
+            onclick={`if(window.triggerPurchaseForm) { window.triggerPurchaseForm('${product.title} (Lifetime)', '${lifetimePriceNum.toFixed(2)}') } else { console.error('Purchase form trigger not ready.') }`}
           >
-            <div>
-              <div class="font-medium">Lifetime License</div>
-              <div class="flex items-center">
-                <span class="text-xl font-bold text-cyan-600">${product.prices.lifetime.toFixed(2)}</span>
-                <span class="text-gray-600 ml-2 text-sm">One-time payment</span>
-              </div>
+            <div class="text-left">
+              <div class="font-semibold text-lg leading-tight">Buy Now</div>
+              <div class="text-xs text-slate-300 leading-tight">Lifetime License <span class="text-slate-400 font-normal">(One-time)</span></div>
             </div>
-             <div class="bg-cyan-600 text-white p-2 rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            <div class="text-right">
+              {/* Lifetime usually doesn't have an original price shown this way, but if you had one: */}
+              {/* {lifetimeDisplay.original && <span class="text-xs line-through text-slate-400 block">{lifetimeDisplay.original}</span>} */}
+              <span class="text-xl font-bold">{lifetimeDisplay.current}</span>
             </div>
           </button>
         )}
       </div>
     </div>
     
-    <div class="w-full lg:w-auto mt-6 lg:mt-0">
-      <img src={product.image} alt={product.title} class="w-full h-auto object-cover rounded-xl shadow-lg"/>
+    <div class="w-full lg:w-auto mt-6 lg:mt-0 flex items-center justify-center lg:justify-end">
+      {product.image ? (
+        <img 
+          src={product.image} 
+          alt={`${product.title} product box`} 
+          class="max-w-xs w-full h-auto object-contain rounded-xl shadow-lg"
+          width="320"
+          height="320"
+        />
+      ) : (
+        <div class="w-full max-w-xs h-64 bg-gray-200 rounded-xl shadow-lg flex items-center justify-center text-gray-500">
+          Image not available
+        </div>
+      )}
     </div>
   </section>
 
@@ -119,7 +160,8 @@ const yourFormSubmitEmail = "medmezzat1964@gmail.com";
     <div class="bg-white rounded-xl shadow-lg overflow-hidden">
       <div class="p-6 md:p-10">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Product Details</h2>
-        <div class="prose prose-lg max-w-none">
+        
+        <div class="prose prose-lg max-w-none text-gray-700">
           {htmlContent && <div set:html={htmlContent} />}
         </div>
       </div>
@@ -127,21 +169,121 @@ const yourFormSubmitEmail = "medmezzat1964@gmail.com";
   </section>
 
   <section class="bg-gradient-to-b from-cyan-50 to-white py-16 px-4 md:px-8 lg:px-16">
-    </section>
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Why Choose Our License Keys?</h2>
+        <div class="h-1 w-24 bg-cyan-500 mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Feature 1 */}
+        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center">
+          <div class="bg-cyan-100 p-4 rounded-full inline-flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Save Big</h3>
+          <p class="text-gray-600 text-sm">Get genuine license keys at prices significantly below retail value.</p>
+        </div>
+        {/* Feature 2 */}
+        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center">
+          <div class="bg-cyan-100 p-4 rounded-full inline-flex items-center justify-center mb-4">
+           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">100% Genuine</h3>
+          <p class="text-gray-600 text-sm">Authentic activation codes sourced through trusted authorized channels.</p>
+        </div>
+        {/* Feature 3 */}
+        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center">
+          <div class="bg-cyan-100 p-4 rounded-full inline-flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Instant Delivery</h3>
+          <p class="text-gray-600 text-sm">Receive your license key immediately after purchase via email.</p>
+        </div>
+        {/* Feature 4 */}
+        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center">
+          <div class="bg-cyan-100 p-4 rounded-full inline-flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Technical Support</h3>
+          <p class="text-gray-600 text-sm">Free technical assistance to help with installation and activation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <section class="mx-4 md:mx-8 lg:mx-24 my-16">
-    </section>
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Trusted By 125,000+ Customers</h2>
+      <div class="h-1 w-24 bg-cyan-500 mx-auto"></div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <div class="flex items-center mb-4 text-yellow-400">
+          {[...Array(5)].map(() => <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
+        </div>
+        <p class="text-gray-600 text-sm mb-4">"Fast delivery and simple installation. The license key worked perfectly on the first try. Saved a lot of money compared to the official store."</p>
+        <div class="font-medium text-gray-800">Michael R.</div>
+        <div class="text-gray-500 text-xs">Verified Customer</div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md">
+         <div class="flex items-center mb-4 text-yellow-400">
+          {[...Array(5)].map(() => <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
+        </div>
+        <p class="text-gray-600 text-sm mb-4">"I was skeptical at first but decided to give it a try. The license works perfectly with the latest {product.title} release. Great customer service too!"</p>
+        <div class="font-medium text-gray-800">Sarah L.</div>
+        <div class="text-gray-500 text-xs">Verified Customer</div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md">
+         <div class="flex items-center mb-4 text-yellow-400">
+          {[...Array(5)].map(() => <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
+        </div>
+        <p class="text-gray-600 text-sm mb-4">"Excellent service! I received my {product.title} license key within minutes of purchase. The savings are incredible and everything is working perfectly."</p>
+        <div class="font-medium text-gray-800">David T.</div>
+        <div class="text-gray-500 text-xs">Verified Customer</div>
+      </div>
+    </div>
+  </section>
+
   <section class="bg-cyan-50 py-16 px-4 md:px-8 lg:px-16">
-    </section>
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Frequently Asked Questions</h2>
+        <div class="h-1 w-24 bg-cyan-500 mx-auto"></div>
+      </div>
+      <div class="space-y-6">
+        {/* FAQ Item 1 */}
+        <div class="bg-white rounded-xl shadow-md overflow-hidden"><div class="p-6"><h3 class="text-xl font-semibold text-gray-800 mb-2">Are these license keys genuine?</h3><p class="text-gray-600 text-sm">Yes, all our license keys are 100% genuine and sourced through authorized channels. They are official {product.title} licenses that provide full access to all features.</p></div></div>
+        {/* FAQ Item 2 */}
+        <div class="bg-white rounded-xl shadow-md overflow-hidden"><div class="p-6"><h3 class="text-xl font-semibold text-gray-800 mb-2">How long does delivery take?</h3><p class="text-gray-600 text-sm">Delivery is instant! Once your payment is processed, your license key will be sent to your email address immediately.</p></div></div>
+        {/* FAQ Item 3 */}
+        <div class="bg-white rounded-xl shadow-md overflow-hidden"><div class="p-6"><h3 class="text-xl font-semibold text-gray-800 mb-2">Will I receive updates?</h3><p class="text-gray-600 text-sm">Yes, you will receive all updates and patches released during your license period. Our 3-year and lifetime licenses include updates for their full duration.</p></div></div>
+        {/* FAQ Item 4 */}
+        <div class="bg-white rounded-xl shadow-md overflow-hidden"><div class="p-6"><h3 class="text-xl font-semibold text-gray-800 mb-2">What if I have installation issues?</h3><p class="text-gray-600 text-sm">Our dedicated support team is available to assist you with any installation or activation issues. Simply contact us, and we'll guide you through the process.</p></div></div>
+        {/* FAQ Item 5 */}
+        <div class="bg-white rounded-xl shadow-md overflow-hidden"><div class="p-6"><h3 class="text-xl font-semibold text-gray-800 mb-2">Is there a money-back guarantee?</h3><p class="text-gray-600 text-sm">Yes, we offer a 30-day money-back guarantee if you're not satisfied with your purchase. Terms and conditions apply.</p></div></div>
+      </div>
+    </div>
+  </section>
 
   <section class="mx-4 md:mx-8 lg:mx-24 my-16">
     <div class="bg-gradient-to-r from-cyan-600 to-cyan-800 rounded-xl shadow-xl overflow-hidden">
       <div class="p-8 md:p-12 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Save on {product.title}?</h2>
-        <p class="text-white text-lg mb-8 max-w-2xl mx-auto">Get your genuine {product.title} license key now and save up to {product.discount}% off retail price. Instant delivery and complete peace of mind.</p>
+        <p class="text-white text-lg mb-8 max-w-2xl mx-auto">Get your genuine {product.title} license key now and save up to {product.discount > 0 ? `${product.discount}%` : 'big'} off retail price. Instant delivery and complete peace of mind.</p>
         <button 
           type="button" 
           class="inline-flex items-center justify-center bg-white hover:bg-gray-100 text-cyan-700 font-bold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl cursor-pointer"
-          onclick={`window.triggerPurchaseForm && window.triggerPurchaseForm('${product.title}', '${product.prices.oneYear ? product.prices.oneYear.toFixed(2) : (product.prices.lifetime ? product.prices.lifetime.toFixed(2) : '0.00')}')`}
+          onclick={`
+            const price = '${oneYearPriceNum !== null ? oneYearPriceNum.toFixed(2) : (lifetimePriceNum !== null ? lifetimePriceNum.toFixed(2) : (threeYearsPriceNum !== null ? threeYearsPriceNum.toFixed(2) : '0.00'))}';
+            const plan = '${oneYearPriceNum !== null ? "(1 Year)" : (lifetimePriceNum !== null ? "(Lifetime)" : (threeYearsPriceNum !== null ? "(3 Years)" : ""))}';
+            if(window.triggerPurchaseForm) {
+              window.triggerPurchaseForm('${product.title} ' + plan, price)
+            } else {
+              console.error('Purchase form trigger not ready.')
+            }
+          `}
         >
           Buy Now
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
@@ -150,28 +292,11 @@ const yourFormSubmitEmail = "medmezzat1964@gmail.com";
     </div>
   </section>
 
-  {/* Render the React Form component. It will be initially hidden. */}
-  {/* client:visible or client:load will hydrate the component and run its useEffect to define window.triggerPurchaseForm */}
   <Form client:load yourEmail={yourFormSubmitEmail} />
 </Layout>
 
 <style is:global>
-  /* If you need any global styles for the modal, though Tailwind should cover most */
   body.modal-open {
-    overflow: hidden; /* Optional: prevent background scrolling when modal is open */
+    overflow: hidden;
   }
 </style>
-
-<script>
-  // This script block is optional if the React component handles body class for overflow
-  // It demonstrates how you could listen to the modal state if needed from outside React
-  // For now, Form.jsx doesn't dispatch open/close events for this purpose,
-  // but it's an idea for further refinement if background scroll becomes an issue.
-
-  // document.addEventListener('purchaseFormOpened', () => {
-  //   document.body.classList.add('modal-open');
-  // });
-  // document.addEventListener('purchaseFormClosed', () => {
-  //   document.body.classList.remove('modal-open');
-  // });
-</script>

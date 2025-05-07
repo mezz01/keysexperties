@@ -18,60 +18,87 @@ interface Props {
 
 const { id, name, title, description, image, prices, discount, link, featured, activationType } = Astro.props;
 
-// Display price range
-const minPrice = prices.oneYear;
-const maxPrice = prices.threeYears;
-const priceRange = `$${minPrice}.00`;
+// Determine the price to display
+// Prioritize oneYear, then lifetime, then threeYears as a fallback or "View Offer"
+let priceDisplayText = "View Offer";
+let primaryPriceAvailable = false;
+
+if (prices.oneYear !== null) {
+  priceDisplayText = `$${prices.oneYear.toFixed(2)}`;
+  primaryPriceAvailable = true;
+} else if (prices.lifetime !== null) {
+  priceDisplayText = `$${prices.lifetime.toFixed(2)}`;
+  primaryPriceAvailable = true;
+} else if (prices.threeYears !== null) { // Fallback if others are null
+  priceDisplayText = `$${prices.threeYears.toFixed(2)}`;
+  primaryPriceAvailable = true;
+}
+
 ---
 
-<div class="relative flex flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg hover:cursor-pointer">
+<a 
+  href={link} 
+  rel="noopener noreferrer"
+  class="relative flex flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-opacity-50 group text-gray-900 no-underline hover:text-gray-900"
+  aria-label={`View details for ${title}`}
+>
   {featured && (
     <div class="absolute top-3 right-3 z-10">
-      <span class="bg-cyan-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+      <span class="bg-cyan-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow">
         Featured
       </span>
     </div>
   )}
   
-  <div class="relative overflow-hidden h-48">
-    <div class="absolute top-3 left-3">
-      <span class="bg-red-500 text-white px-2 py-1 rounded-md text-xs font-bold flex items-center">
-        {discount}% OFF
-        <span class="relative ml-1">
-          <span class="absolute inline-flex h-2 w-2 rounded-full bg-white opacity-75 animate-ping"></span>
-          <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-white"></span>
+  <div class="relative overflow-hidden h-48 w-full">
+    {discount > 0 && (
+      <div class="absolute top-3 left-3 z-10">
+        <span class="bg-red-500 text-white px-2 py-1 rounded-md text-xs font-bold flex items-center shadow">
+          {discount}% OFF
+          <span class="relative ml-1">
+            <span class="absolute inline-flex h-2 w-2 rounded-full bg-white opacity-75 animate-ping"></span>
+            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-white"></span>
+          </span>
         </span>
-      </span>
-    </div>
+      </div>
+    )}
     <img 
       src={image} 
       alt={`${name} product image`} 
-      class="h-full w-full object-contain object-center transition-transform duration-300 hover:scale-105"
-      onerror="this.src='/images/product-placeholder.webp'"
+      class="h-full w-full object-contain object-center transition-transform duration-300 group-hover:scale-105 p-2"
+      onerror="this.style.display='none'; const placeholder = document.createElement('img'); placeholder.src='/images/product-placeholder.webp'; placeholder.alt='Product placeholder image'; placeholder.className='h-full w-full object-contain object-center p-2 text-xs text-gray-500'; this.parentNode.appendChild(placeholder); this.parentNode.insertBefore(document.createTextNode('Image not found'), placeholder.nextSibling);"
     />
   </div>
   
   <div class="flex flex-col flex-grow p-4">
-    <h3 class="text-lg font-semibold line-clamp-1">{title}</h3>
+    <h3 class="text-lg font-semibold line-clamp-2 text-gray-800 group-hover:text-cyan-600 transition-colors">
+      {title}
+    </h3>
     
+    {/* You could add a short description here if needed: 
+    <p class="text-sm text-gray-600 mt-1 line-clamp-2">{description}</p> 
+    */}
     
-    
-    <div class="mt-auto pt-4">
-      <div class="flex items-baseline justify-between">
-        <p class="text-lg font-bold text-cyan-700">{priceRange}</p>
+    <div class="mt-auto pt-4"> {/* Pushes content below to the bottom */}
+      <div class="flex items-baseline justify-between mb-2">
+        {primaryPriceAvailable ? (
+          <p class="text-xl font-bold text-cyan-700">{priceDisplayText}</p>
+        ) : (
+          <p class="text-lg font-semibold text-cyan-700">{priceDisplayText}</p> 
+        )}
       </div>
-      <div class="mt-1">
-        <span class="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded">
+      <div class="mb-3">
+        <span class="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full font-medium">
           {activationType}
         </span>
       </div>
-      <a 
-        href={link}
-        rel="noopener noreferrer" 
-        class="mt-3 block w-full bg-cyan-500 hover:bg-cyan-600 text-white text-center py-2 rounded-lg transition-colors"
+      <button 
+        type="button" 
+        tabindex="-1" /* Makes the button not focusable with keyboard as the card itself is focusable */
+        class="w-full bg-cyan-500 hover:bg-cyan-600 text-white text-center font-semibold py-2.5 px-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75"
       >
-        View Details
-      </a>
+        Buy Now
+      </button>
     </div>
   </div>
-</div>
+</a>
