@@ -61,11 +61,11 @@ const Form = ({ yourEmail }) => {
     return (
         <div 
             className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
-            onClick={closeModal} // Close if overlay is clicked
+            onClick={closeModal} 
         >
             <div 
                 className="bg-white p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-md relative transform transition-all"
-                onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal content
+                onClick={(e) => e.stopPropagation()} 
             >
                 <button 
                     onClick={closeModal}
@@ -80,20 +80,19 @@ const Form = ({ yourEmail }) => {
                 </h2>
                 
                 <form action={`https://formsubmit.co/${yourEmail}`} method="POST">
-                    {/* FormSubmit Hidden Fields */}
+                   
                     <input type="hidden" name="_next" value={paypalLink} />
                     <input type="hidden" name="_autoresponse" value={autoresponseMessage} />
                     <input type="hidden" name="_subject" value={emailSubjectForYou} />
                     
                     
-                    {/* Optional: Send product name and price in the email to yourself */}
+                    
                     <input type="hidden" name="Product" value={productName} />
                     <input type="hidden" name="Price" value={`$${productPrice}`} />
                     
-                    {/* Honeypot for spam */}
+             
                     <input type="text" name="_honey" style={{ display: 'none' }} />
-                    {/* Optional: Disable reCAPTCHA if you trust your users or have other spam prevention */}
-                    {/* <input type="hidden" name="_captcha" value="false" /> */}
+                    
 
                     <div className="mb-5">
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
@@ -127,13 +126,13 @@ const Form = ({ yourEmail }) => {
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
                         <input 
                             type="email" 
-                            name="email" // This 'name="email"' is crucial for FormSubmit's _replyto and _autoresponse
+                            name="email" 
                             id="email" 
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-shadow sm:text-sm" 
                             required 
-                            placeholder="Your Email for Confirmation & License"
+                            placeholder="Your Email for Confirmation (where your order will be delivered)"
                         />
                     </div>
 
