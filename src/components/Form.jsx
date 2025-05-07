@@ -84,7 +84,7 @@ const Form = ({ yourEmail }) => {
                     <input type="hidden" name="_next" value={paypalLink} />
                     <input type="hidden" name="_autoresponse" value={autoresponseMessage} />
                     <input type="hidden" name="_subject" value={emailSubjectForYou} />
-                    <input type="hidden" name="_captcha" value="false"></input>
+                    
                     
                     {/* Optional: Send product name and price in the email to yourself */}
                     <input type="hidden" name="Product" value={productName} />
