@@ -55,7 +55,7 @@ const Form = ({ yourEmail }) => {
     }
 
     const paypalLink = `http://paypal.me/OBHSOFTWARE/${productPrice}`;
-    const autoresponseMessage = `Thank you for your interest in ${productName}! Please complete your payment via PayPal. Your order for ${productName} at $${productPrice} will be processed upon payment confirmation. If you have any questions, please contact us.`;
+    const autoresponseMessage = `Thank you for your order ${name} , we received your order of ${productName} and you will receive your full document (key + installation guide) in maximum 6 hours after paypal payment. If you have any questions, please contact us.`;
     const emailSubjectForYou = `New License Purchase: ${productName} - Price: $${productPrice}`;
 
     return (
