@@ -10,6 +10,8 @@ const Form = ({ yourEmail }) => {
     const [country, setCountry] = useState('');
     const [email, setEmail] = useState('');
 
+    const deliveryMessage = "due to high demand, you will receive your key in a maximum span of 6 hours";
+
     const openModalWithProduct = useCallback((pName, pPrice) => {
         setProductName(pName);
         setProductPrice(pPrice);
@@ -18,11 +20,13 @@ const Form = ({ yourEmail }) => {
         setCountry('');
         setEmail('');
         setIsVisible(true);
+        document.body.classList.add('modal-open'); // Prevent background scroll
     }, []);
 
-    const closeModal = () => {
+    const closeModal = useCallback(() => {
         setIsVisible(false);
-    };
+        document.body.classList.remove('modal-open'); // Restore background scroll
+    }, []);
 
     useEffect(() => {
         // Expose the function to open the modal globally
@@ -47,7 +51,7 @@ const Form = ({ yourEmail }) => {
         return () => {
             window.removeEventListener('keydown', handleEsc);
         };
-    }, [isVisible]);
+    }, [isVisible, closeModal]); // Added closeModal to dependency array
 
 
     if (!isVisible) {
@@ -55,12 +59,12 @@ const Form = ({ yourEmail }) => {
     }
 
     const paypalLink = `http://paypal.me/OBHSOFTWARE/${productPrice}`;
-    const autoresponseMessage = `Thank you for your order ${name} , we received your order of ${productName} and you will receive your full document (key + installation guide) in maximum 6 hours after paypal payment. If you have any questions, please contact us.`;
+    const autoresponseMessage = `Thank you for your order ${name}, we received your order of ${productName} and you will receive your full document (key + installation guide) in maximum 6 hours after paypal payment. If you have any questions, please contact us.`;
     const emailSubjectForYou = `New License Purchase: ${productName} - Price: $${productPrice}`;
 
     return (
         <div 
-            className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm"
             onClick={closeModal} 
         >
             <div 
@@ -69,7 +73,7 @@ const Form = ({ yourEmail }) => {
             >
                 <button 
                     onClick={closeModal}
-                    className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors p-1"
+                    className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
                     aria-label="Close"
                 >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -85,21 +89,19 @@ const Form = ({ yourEmail }) => {
                     <input type="hidden" name="_autoresponse" value={autoresponseMessage} />
                     <input type="hidden" name="_subject" value={emailSubjectForYou} />
                     
-                    
-                    
-                    <input type="hidden" name="Product" value={productName} />
+                    <input type="hidden" name="Product Name" value={productName} />
                     <input type="hidden" name="Price" value={`$${productPrice}`} />
                     
-             
                     <input type="text" name="_honey" style={{ display: 'none' }} />
+                    <input type="hidden" name="_captcha" value="false" /> 
                     
 
                     <div className="mb-5">
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                         <input 
                             type="text" 
-                            name="name" 
-                            id="name" 
+                            name="fullName" 
+                            id="fullName" 
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             className="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-shadow sm:text-sm" 
@@ -138,10 +140,16 @@ const Form = ({ yourEmail }) => {
 
                     <button 
                         type="submit"
-                        className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 transition-all duration-150 ease-in-out text-lg"
+                        className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 transition-all duration-150 ease-in-out text-lg flex flex-col items-center"
                     >
-                        BUY NOW & PAY ${productPrice}
+                        <span>BUY NOW & PAY ${productPrice}</span>
+                        <span className="text-xs font-normal mt-1 leading-snug opacity-90">
+                            {deliveryMessage}
+                        </span>
                     </button>
+                     <p className="text-xs text-gray-500 mt-4 text-center">
+                        You will be redirected to PayPal to complete your payment.
+                    </p>
                 </form>
             </div>
         </div>
