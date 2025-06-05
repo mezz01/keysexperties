@@ -36,7 +36,7 @@ import ProductCard from '../ProductCard.astro';
           image={product.image}
           prices={product.prices}
           discount={product.discount}
-          link={`/${product.category}/${slugify(product.name)}/`}
+          link={`/${product.category}/${slugify(product.title)}/`}
           featured={product.featured}
           activationType={product.activationType}
         />

@@ -9,7 +9,7 @@ export async function getStaticPaths() {
   return autodeskProducts.map(product => ({
     params: { 
       category: product.category,
-      product: slugify(product.name), // Make sure slugify handles names correctly
+      product: slugify(product.title), // Make sure slugify handles names correctly
     },
     props: { product }
   }));
